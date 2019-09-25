@@ -1,0 +1,19 @@
+name: setup
+description: "Setup a starter repository when created from template"
+author: "@education"
+runs:
+  using: "node12"
+  main: "./setup.js"
+inputs:
+  pull-request-title:
+    description: A title that should be used when opening the first pull request
+    default: "Assignment"
+  pull-request-template:
+    description: A template that should be used when opening the first pull request
+    default: .github/template/PULL_REQUEST.md
+  pull-request-files:
+    description: A directory containing all of the sample files you would like to use for the first commit
+    default: .github/template/files/
+  pull-request-branch-name:
+    description: The name of the branch for the initial pull request
+    default: assignment
