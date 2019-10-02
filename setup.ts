@@ -5,6 +5,7 @@ import * as path from 'path'
 import * as glob from 'glob'
 
 import commit, {CommitFile} from './commit'
+import {PullsCreateParams} from '@octokit/rest'
 
 const run = async (): Promise<void> => {
   try {
@@ -69,12 +70,16 @@ const run = async (): Promise<void> => {
     const pullRequestTemplateBuffer = fs.readFileSync(pullRequestTemplate)
     const body = pullRequestTemplateBuffer.toString('utf8')
     const pullResponse = await octokit.pulls.create({
+      mediaType: {
+        previews: ['shadow-cat'],
+      },
       owner,
       repo,
       title,
       body,
       head: pullRequestBranchName,
       base: 'master',
+      draft: true,
     })
     console.log({pullResponse})
   } catch (error) {
