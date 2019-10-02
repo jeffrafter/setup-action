@@ -5,7 +5,6 @@ import * as path from 'path'
 import * as glob from 'glob'
 
 import commit, {CommitFile} from './commit'
-import {PullsCreateParams} from '@octokit/rest'
 
 const run = async (): Promise<void> => {
   try {
